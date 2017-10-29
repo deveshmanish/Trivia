@@ -15,6 +15,10 @@
         <item name="android:textSize">30sp</item>
         <item name="android:text">Category</item>
         <item name="android:layout_margin">20dp</item>
+        <item name="android:shadowColor">@color/colorPrimary</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
     </style>
 
     <style name="cardTheme">
@@ -27,8 +31,14 @@
 
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textSize">30sp</item>
-        <item name="android:padding">20dp</item>
+        <item name="android:layout_margin">10dp</item>
         <item name="android:textAlignment">center</item>
+
+        <item name="android:shadowColor">@color/colorPrimary</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+
     </style>
 
     <style name="queryFontTheme">
@@ -39,12 +49,19 @@
         <item name="android:layout_marginBottom">50dp</item>
         <item name="android:hint">@string/hint</item>
         <item name="android:inputType">numberPassword</item>
+
     </style>
 
     <style name="fontTheme">
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textSize">30sp</item>
+
+        <item name="android:shadowColor">@color/colorPrimary</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
     </style>
+
     <style name="randomButtonTheme">
         <item name="android:textColor">@color/textColor</item>
         <item name="android:background">@drawable/button</item>
@@ -72,6 +89,15 @@
         <item name="android:stateListAnimator">@animator/button_state_list_anim_material</item>
 
     </style>
+
+    <style name="shareButtonTheme">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:visibility">gone</item>
+
+    </style>
+
 
 </resources>
 

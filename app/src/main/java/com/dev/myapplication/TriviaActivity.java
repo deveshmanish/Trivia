@@ -3,13 +3,16 @@ package com.dev.myapplication;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -23,9 +26,11 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
     private static final int LOADER_ID = 1;
     String category;
     String query;
-    String query2;
     private TextView mEmptyStateTextView;
     private TextView mTrivia;
+    private CardView triviaCardView;
+    private ImageView shareButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
 
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         mTrivia = (TextView) findViewById(R.id.trivia);
+        triviaCardView = (CardView) findViewById(R.id.triviaCardView);
+        shareButton = (ImageView) findViewById(R.id.share_button);
 
 
         ConnectivityManager cm =
@@ -59,6 +66,7 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
 
         }
 
+
     }
 
     @Override
@@ -66,7 +74,7 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
 
         Uri baseUri = Uri.parse(REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
-        if (query.equalsIgnoreCase("rubbish")) {
+        if (query.equalsIgnoreCase("random")) {
 
             uriBuilder.appendPath("/random");
             uriBuilder.appendPath("/" + category);
@@ -80,7 +88,7 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
     }
 
     @Override
-    public void onLoadFinished(Loader<String> loader, String trivia) {
+    public void onLoadFinished(Loader<String> loader, final String trivia) {
         // Clear the adapter of previous earthquake data
 
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.loading_indicator);
@@ -91,6 +99,26 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
         if (trivia != null && !trivia.isEmpty()) {
             mEmptyStateTextView.setText(null);
             mTrivia.setText(trivia);
+            triviaCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (shareButton.getVisibility() == View.GONE) {
+                        shareButton.setVisibility(View.VISIBLE);
+                    } else shareButton.setVisibility(View.GONE);
+                }
+            });
+            shareButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Hey! I found this cool trivia");
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, trivia);
+
+                    startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                }
+            });
         }
     }
 

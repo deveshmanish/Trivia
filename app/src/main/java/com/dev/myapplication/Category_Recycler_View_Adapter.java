@@ -16,8 +16,8 @@ import java.util.List;
 
 public class Category_Recycler_View_Adapter extends RecyclerView.Adapter<Category_View_Holder> {
 
-    List<Category> list = Collections.emptyList();
-    Context context;
+    private List<Category> list = Collections.emptyList();
+    private Context context;
     private int expandedPosition = -1;
     private OnItemClickListener mOnItemClickListener;
 
@@ -59,7 +59,7 @@ public class Category_Recycler_View_Adapter extends RecyclerView.Adapter<Categor
             public void onClick(View v) {
                 Intent intent = new Intent(context, TriviaActivity.class);
                 intent.putExtra("category", list.get(position).getmTitle().toLowerCase());
-                intent.putExtra("query", "RUBBISH");
+                intent.putExtra("query", "random");
                 context.startActivity(intent);
 
             }

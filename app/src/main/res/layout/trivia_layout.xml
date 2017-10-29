@@ -7,6 +7,7 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/triviaCardView"
+        style="@style/cardTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -14,21 +15,21 @@
         app:cardBackgroundColor="@color/cardBackgroudColor"
         app:cardCornerRadius="3dp"
         app:cardElevation="10dp"
-        app:cardUseCompatPadding="true"
-        style="@style/cardTheme">
+        app:cardUseCompatPadding="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:animateLayoutChanges="true">
+            android:animateLayoutChanges="true"
+            android:padding="5dp">
 
             <!-- Empty view is only visible when the list has no items. -->
             <TextView
                 android:id="@+id/empty_view"
+                style="@style/fontTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                style="@style/fontTheme"/>
+                android:layout_centerInParent="true" />
 
             <!-- Loading indicator is only shown before the first load -->
             <ProgressBar
@@ -40,10 +41,17 @@
 
             <TextView
                 android:id="@+id/trivia"
+                style="@style/triviaFontTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                style="@style/triviaFontTheme" />
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/share_button"
+                style="@style/shareButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/share_button" />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
