@@ -1,9 +1,11 @@
 package com.dev.myapplication;
 
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -33,9 +35,10 @@ public class SpecificTrivia extends AppCompatActivity {
         category = getIntent().getStringExtra("category");
         editText = (EditText) findViewById(R.id.query);
         editText.setTransformationMethod(null);
-//        editText.setHint("Enter something");
         button = (Button) findViewById(R.id.query_submit);
         datePicker = (DatePicker) findViewById(R.id.date_picker);
+        getSupportActionBar().setTitle(category.toUpperCase());
+
         switch (category) {
             case "date": {
 
@@ -45,6 +48,16 @@ public class SpecificTrivia extends AppCompatActivity {
                 break;
             }
             default: {
+                query = editText.getText().toString().trim();
+                if (TextUtils.isEmpty(query)) {
+                    button.setEnabled(false);
+                    Toast t = Toast.makeText(SpecificTrivia.this, "Please enter a value", Toast.LENGTH_LONG);
+                    t.show();
+                    ((GradientDrawable) button.getBackground()).setColor(getResources().getColor(R.color.colorPrimary));
+                } else {
+                    button.setEnabled(true);
+                    ((GradientDrawable) button.getBackground()).setColor(getResources().getColor(R.color.buttonBackgroudColor));
+                }
                 editText.setVisibility(View.VISIBLE);
                 datePicker.setVisibility(View.GONE);
                 editText.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
@@ -55,22 +68,26 @@ public class SpecificTrivia extends AppCompatActivity {
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                        editText.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
-
-                        if (s == "") {
-                            Toast t = Toast.makeText(SpecificTrivia.this, "Please enter a value", Toast.LENGTH_LONG);
-                            t.show();
-                        }
                     }
 
                     @Override
                     public void afterTextChanged(Editable s) {
                         query = editText.getText().toString().trim();
+                        if (TextUtils.isEmpty(query)) {
+                            button.setEnabled(false);
+                            Toast t = Toast.makeText(SpecificTrivia.this, "Please enter a value", Toast.LENGTH_LONG);
+                            t.show();
+                            ((GradientDrawable) button.getBackground()).setColor(getResources().getColor(R.color.colorPrimary));
+                        } else {
+                            button.setEnabled(true);
+                            ((GradientDrawable) button.getBackground()).setColor(getResources().getColor(R.color.buttonBackgroudColor));
+                        }
+
                     }
                 });
             }
         }
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,11 +107,8 @@ public class SpecificTrivia extends AppCompatActivity {
                         intent.putExtra("query", query);
 
                 }
-                if (query == "" || query == null) {
-                    Toast t = Toast.makeText(SpecificTrivia.this, "Please enter a value", Toast.LENGTH_LONG);
-                    t.show();
-                } else
-                    startActivity(intent);
+                startActivity(intent);
+                finish();
 
             }
         });

@@ -91,5 +91,18 @@ public class Category_Recycler_View_Adapter extends RecyclerView.Adapter<Categor
         super.onAttachedToRecyclerView(recyclerView);
     }
 
+    // Insert a new item to the RecyclerView
+    public void insert(int position, Category category) {
+        list.add(position, category);
+        notifyItemInserted(position);
+    }
+
+    // Remove a RecyclerView item containing the Serial object
+    public void remove(Category data) {
+        int position = list.indexOf(data);
+        list.remove(position);
+        notifyItemRemoved(position);
+    }
+
 
 }

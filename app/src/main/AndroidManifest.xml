@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TriviaActivity"
-            android:configChanges="orientation|screenSize">
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".SpecificTrivia"
             android:windowSoftInputMode="adjustResize"

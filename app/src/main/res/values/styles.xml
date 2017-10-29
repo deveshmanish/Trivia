@@ -68,6 +68,8 @@
         <item name="android:layout_marginLeft">50dp</item>
         <item name="android:text">Random</item>
         <item name="android:layout_marginBottom">10dp</item>
+
+        <item name="android:layout_marginTop">20dp</item>
         <item name="android:stateListAnimator">@animator/button_state_list_anim_material</item>
 
     </style>
@@ -78,6 +80,7 @@
         <item name="android:layout_marginRight">50dp</item>
         <item name="android:text">Specific</item>
         <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
         <item name="android:stateListAnimator">@animator/button_state_list_anim_material</item>
 
     </style>
@@ -93,8 +96,14 @@
     <style name="shareButtonTheme">
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:layout_marginBottom">10dp</item>
-        <item name="android:visibility">gone</item>
+        <item name="android:layout_marginBottom">30dp</item>
+
+    </style>
+
+    <style name="buttonTheme">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:stateListAnimator">@animator/button_state_list_anim_material</item>
 
     </style>
 

@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -30,6 +32,11 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
     private TextView mTrivia;
     private CardView triviaCardView;
     private ImageView shareButton;
+    private RelativeLayout hiddenView;
+    private Button random;
+    private Button specific;
+    private ImageView expand;
+    private ImageView collapse;
 
 
     @Override
@@ -44,8 +51,13 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
         mTrivia = (TextView) findViewById(R.id.trivia);
         triviaCardView = (CardView) findViewById(R.id.triviaCardView);
         shareButton = (ImageView) findViewById(R.id.share_button);
+        hiddenView = (RelativeLayout) findViewById(R.id.hidden_view);
+        random = (Button) findViewById(R.id.random_button);
+        specific = (Button) findViewById(R.id.specific_button);
+        expand = (ImageView) findViewById(R.id.expand_button);
 
 
+        getSupportActionBar().setTitle(category.toUpperCase());
         ConnectivityManager cm =
                 (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -65,10 +77,7 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
             mEmptyStateTextView.setText(R.string.no_internet);
 
         }
-
-
     }
-
     @Override
     public Loader<String> onCreateLoader(int i, Bundle bundle) {
 
@@ -82,7 +91,6 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
             uriBuilder.appendPath("/" + query);
             uriBuilder.appendPath("/" + category);
         }
-
 
         return new TriviaLoader(this, uriBuilder.toString());
     }
@@ -103,9 +111,13 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
                 @Override
                 public void onClick(View v) {
 
-                    if (shareButton.getVisibility() == View.GONE) {
-                        shareButton.setVisibility(View.VISIBLE);
-                    } else shareButton.setVisibility(View.GONE);
+                    if (hiddenView.getVisibility() == View.GONE) {
+                        hiddenView.setVisibility(View.VISIBLE);
+                        expand.setVisibility(View.GONE);
+                    } else {
+                        hiddenView.setVisibility(View.GONE);
+                        expand.setVisibility(View.VISIBLE);
+                    }
                 }
             });
             shareButton.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +129,26 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
                     sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, trivia);
 
                     startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                    finish();
+                }
+            });
+            random.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(TriviaActivity.this, TriviaActivity.class);
+                    intent.putExtra("category", category);
+                    intent.putExtra("query", "random");
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            specific.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(TriviaActivity.this, SpecificTrivia.class);
+                    intent.putExtra("category", category);
+                    startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -126,5 +158,6 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
     public void onLoaderReset(Loader<String> loader) {
         // Loader reset, so we can clear out our existing data.
         mTrivia.setText(null);
+        finish();
     }
 }
