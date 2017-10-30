@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="cardBackgroundColor" format="color" />
+    <attr name="buttonBackgroundColor" format="color" />
+
+    <attr name="cardBackgroundColorInverse" format="color" />
+    <attr name="buttonBackgroundColorInverse" format="color" />
+
+
+    <attr name="buttonDisabledBackgroundColor" format="color" />
+    <attr name="buttonDisabledBackgroundColorInverse" format="color" />
+</resources>

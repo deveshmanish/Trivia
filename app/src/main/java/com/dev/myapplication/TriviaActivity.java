@@ -9,7 +9,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +21,7 @@ import android.widget.TextView;
  * Created by Devesh Chaturvedi on 014-14-10-2017.
  */
 
-public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks<String> {
+public class TriviaActivity extends BaseActivity implements LoaderCallbacks<String> {
 
     private static final String REQUEST_URL = "http://numbersapi.com";
     private static final int LOADER_ID = 1;
@@ -40,7 +39,7 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trivia_layout);
 
@@ -78,6 +77,7 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
 
         }
     }
+
     @Override
     public Loader<String> onCreateLoader(int i, Bundle bundle) {
 
@@ -129,7 +129,7 @@ public class TriviaActivity extends AppCompatActivity implements LoaderCallbacks
                     sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, trivia);
 
                     startActivity(Intent.createChooser(sharingIntent, "Share via"));
-                    finish();
+//                    finish();
                 }
             });
             random.setOnClickListener(new View.OnClickListener() {

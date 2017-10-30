@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
-    android:orientation="vertical"
-    android:noHistory="true">
+    android:noHistory="true"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/categorycardView"
         style="@style/cardTheme"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/cardBackgroudColor"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="?attr/cardBackgroundColor"
         app:cardCornerRadius="3dp"
         app:cardElevation="10dp"
         app:cardUseCompatPadding="true">

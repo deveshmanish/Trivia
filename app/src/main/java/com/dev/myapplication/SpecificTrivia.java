@@ -1,9 +1,7 @@
 package com.dev.myapplication;
 
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -18,7 +16,7 @@ import android.widget.Toast;
  * Created by Devesh Chaturvedi on 027-27-10-2017.
  */
 
-public class SpecificTrivia extends AppCompatActivity {
+public class SpecificTrivia extends BaseActivity {
 
     String query;
     String category;
@@ -28,7 +26,7 @@ public class SpecificTrivia extends AppCompatActivity {
     String day = null, month = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.specific_fact_layout);
 
@@ -51,12 +49,10 @@ public class SpecificTrivia extends AppCompatActivity {
                 query = editText.getText().toString().trim();
                 if (TextUtils.isEmpty(query)) {
                     button.setEnabled(false);
-                    Toast t = Toast.makeText(SpecificTrivia.this, "Please enter a value", Toast.LENGTH_LONG);
+                    Toast t = Toast.makeText(SpecificTrivia.this, "Please enter a value", Toast.LENGTH_SHORT);
                     t.show();
-                    ((GradientDrawable) button.getBackground()).setColor(getResources().getColor(R.color.colorPrimary));
                 } else {
                     button.setEnabled(true);
-                    ((GradientDrawable) button.getBackground()).setColor(getResources().getColor(R.color.buttonBackgroudColor));
                 }
                 editText.setVisibility(View.VISIBLE);
                 datePicker.setVisibility(View.GONE);
@@ -64,6 +60,7 @@ public class SpecificTrivia extends AppCompatActivity {
                 editText.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
                     }
 
                     @Override
@@ -75,12 +72,10 @@ public class SpecificTrivia extends AppCompatActivity {
                         query = editText.getText().toString().trim();
                         if (TextUtils.isEmpty(query)) {
                             button.setEnabled(false);
-                            Toast t = Toast.makeText(SpecificTrivia.this, "Please enter a value", Toast.LENGTH_LONG);
+                            Toast t = Toast.makeText(SpecificTrivia.this, "Please enter a value", Toast.LENGTH_SHORT);
                             t.show();
-                            ((GradientDrawable) button.getBackground()).setColor(getResources().getColor(R.color.colorPrimary));
                         } else {
                             button.setEnabled(true);
-                            ((GradientDrawable) button.getBackground()).setColor(getResources().getColor(R.color.buttonBackgroudColor));
                         }
 
                     }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="?attr/colorAccent"
     android:noHistory="true">
 
     <android.support.v7.widget.CardView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginTop="50dp"
-        app:cardBackgroundColor="@color/cardBackgroudColor"
+        app:cardBackgroundColor="?attr/cardBackgroundColor"
         app:cardCornerRadius="3dp"
         app:cardElevation="10dp"
         app:cardUseCompatPadding="true">
@@ -46,19 +46,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true" />
+
             <ImageView
                 android:id="@+id/expand_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_expand_more_white_24dp"
-                android:padding="10dp"
+                android:layout_below="@+id/trivia"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/trivia"/>
+                android:padding="10dp"
+                android:src="@drawable/ic_expand_more_white_24dp" />
 
             <RelativeLayout
+                android:id="@+id/hidden_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/hidden_view"
                 android:layout_below="@+id/trivia"
                 android:visibility="gone">
 
@@ -66,43 +67,43 @@
                     android:id="@+id/collapse_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_expand_less_white_24dp"
-                    android:padding="10dp"
+                    android:layout_above="@+id/share_button"
                     android:layout_centerHorizontal="true"
-                    android:layout_above="@+id/share_button" />
-            <ImageView
-                android:id="@+id/share_button"
-                style="@style/shareButtonTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_share_white_24dp"
-                android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:src="@drawable/ic_expand_less_white_24dp" />
 
-            <Button
-                android:id="@+id/random_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="35dp"
-                android:layout_marginStart="53dp"
-                android:text="Random"
-                style="@style/buttonTheme"/>
+                <ImageView
+                    android:id="@+id/share_button"
+                    style="@style/shareButtonTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_share_white_24dp" />
 
-            <Button
-                android:id="@+id/specific_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="45dp"
-                android:layout_alignParentBottom="true"
-                android:text="Specific"
-                style="@style/buttonTheme"/>
+                <Button
+                    android:id="@+id/random_button"
+                    style="@style/buttonTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="35dp"
+                    android:layout_marginStart="53dp"
+                    android:text="Random" />
+
+                <Button
+                    android:id="@+id/specific_button"
+                    style="@style/buttonTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="45dp"
+                    android:text="Specific" />
             </RelativeLayout>
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
-
 
 
 </RelativeLayout>

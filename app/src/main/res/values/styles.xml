@@ -1,12 +1,37 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:textColorPrimary">@color/textColor</item>
+        <item name="android:textColorPrimaryInverse">@color/textColorInverse</item>
+        <item name="cardBackgroundColor">@color/cardBackgroundColor</item>
+        <item name="cardBackgroundColorInverse">@color/cardBackgroundColorInverse</item>
+        <item name="buttonBackgroundColor">@color/buttonBackgroundColor</item>
+        <item name="buttonBackgroundColorInverse">@color/buttonBackgroundColorInverse</item>
+        <item name="buttonDisabledBackgroundColor">@color/buttonDisabledBackgroundColor</item>
+        <item name="buttonDisabledBackgroundColorInverse">@color/buttonDisabledBackgroundColorInverse</item>
+
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryInverse</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkInverse</item>
+        <item name="colorAccent">@color/colorAccentInverse</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:textColorPrimary">@color/textColorInverse</item>
+        <item name="android:textColorPrimaryInverse">@color/textColor</item>
+        <item name="cardBackgroundColor">@color/cardBackgroundColorInverse</item>
+        <item name="cardBackgroundColorInverse">@color/cardBackgroundColor</item>
+        <item name="buttonBackgroundColor">@color/cardBackgroundColor</item>
+        <item name="buttonBackgroundColorInverse">@color/buttonBackgroundColor</item>
+        <item name="buttonDisabledBackgroundColor">@color/buttonDisabledBackgroundColorInverse</item>
+        <item name="buttonDisabledBackgroundColorInverse">@color/buttonDisabledBackgroundColor</item>
     </style>
 
     <style name="CategoryFontTheme">
@@ -15,10 +40,10 @@
         <item name="android:textSize">30sp</item>
         <item name="android:text">Category</item>
         <item name="android:layout_margin">20dp</item>
-        <item name="android:shadowColor">@color/colorPrimary</item>
-        <item name="android:shadowRadius">5</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
+        <!--<item name="android:shadowColor">@color/colorPrimary</item>-->
+        <!--<item name="android:shadowRadius">5</item>-->
+        <!--<item name="android:shadowDx">1</item>-->
+        <!--<item name="android:shadowDy">1</item>-->
     </style>
 
     <style name="cardTheme">
@@ -34,10 +59,10 @@
         <item name="android:layout_margin">10dp</item>
         <item name="android:textAlignment">center</item>
 
-        <item name="android:shadowColor">@color/colorPrimary</item>
-        <item name="android:shadowRadius">5</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
+        <!--<item name="android:shadowColor">@color/colorPrimary</item>-->
+        <!--<item name="android:shadowRadius">5</item>-->
+        <!--<item name="android:shadowDx">1</item>-->
+        <!--<item name="android:shadowDy">1</item>-->
 
     </style>
 
@@ -56,10 +81,10 @@
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textSize">30sp</item>
 
-        <item name="android:shadowColor">@color/colorPrimary</item>
-        <item name="android:shadowRadius">5</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
+        <!--<item name="android:shadowColor">@color/colorPrimary</item>-->
+        <!--<item name="android:shadowRadius">5</item>-->
+        <!--<item name="android:shadowDx">1</item>-->
+        <!--<item name="android:shadowDy">1</item>-->
     </style>
 
     <style name="randomButtonTheme">
@@ -87,7 +112,7 @@
 
     <style name="submitButtonTheme">
         <item name="android:textColor">@color/textColor</item>
-        <item name="android:background">@drawable/button</item>
+        <item name="android:background">@drawable/button_selector</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:stateListAnimator">@animator/button_state_list_anim_material</item>
 
