@@ -22,19 +22,12 @@
             android:layout_height="match_parent"
             android:animateLayoutChanges="true">
 
-            <DatePicker
-                android:id="@+id/date_picker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/cardBackgroundColor"
-                android:visibility="gone"></DatePicker>
 
             <EditText
                 android:id="@+id/query"
                 style="@style/queryFontTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/date_picker"
                 android:layout_centerInParent="true" />
 
             <Button
